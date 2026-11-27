@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>مفكرة النحلات 🐝 | متابعة العبادات اليومية</title>
+    
+    <!-- خطوط عربية جميلة وواضحة: Cairo و Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            light: '#B5C6B3',
+                            DEFAULT: '#8FA893',
+                            dark: '#6B826E',
+                            soft: '#EEF3EE'
+                        },
+                        cream: {
+                            DEFAULT: '#FDFBF7',
+                            warm: '#F6F2E9',
+                            border: '#E6DFD1'
+                        },
+                        honey: {
+                            light: '#FBE8B2',
+                            DEFAULT: '#F4C95D',
+                            dark: '#D4A359',
+                            soft: '#FEF8E7'
+                        },
+                        ink: {
+                            DEFAULT: '#3B463D',
+                            muted: '#6D7A6F'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    },
+                    borderRadius: {
+                        'card': '20px',
+                        'pill': '9999px'
+                    },
+                    boxShadow: {
+                        'soft': '0 8px 24px -4px rgba(107, 130, 110, 0.08), 0 2px 6px -1px rgba(107, 130, 110, 0.04)',
+                        'honey': '0 8px 20px -4px rgba(244, 201, 93, 0.35)',
+                        'nav': '0 -4px 20px rgba(107, 130, 110, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* تنسيقات أساسية وهوية بصرية هادئة */
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background-color: #FDFBF7;
+            color: #3B463D;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* خلفية مزخرفة بنمط خلية نحل وأوراق نباتية خفيفة جداً */
+        .bg-botanical-pattern {
+            background-image: 
+                radial-gradient(circle at 12% 18%, rgba(181, 198, 179, 0.16) 0%, transparent 25%),
+                radial-gradient(circle at 88% 82%, rgba(244, 201, 93, 0.14) 0%, transparent 28%);
+        }
+
+        /* بطاقات مستديرة بظلال ناعمة */
+        .bee-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #EFECE4;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px -4px rgba(107, 130, 110, 0.07);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        /* أزرار الاختيار التفاعلية */
+        .choice-btn {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+        .choice-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* حركة طيران لطيفة للنحلة */
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(3deg); }
+        }
+        .animate-bee {
+            display: inline-block;
+            animation: gentleFloat 3.2s ease-in-out infinite;
+        }
+
+        /* حركة ظهور الصفحات */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .view-enter {
+            animation: fadeSlideUp 0.28s ease-out forwards;
+        }
+
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F6F2E9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B5C6B3;
+            border-radius: 10px;
+        }
+
+        /* تحسين مظهر حقل الأرقام */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-cream bg-botanical-pattern min-h-screen flex flex-col pb-24 md:pb-10">
+
+    <!-- ================= الشريط العلوي (Header & Desktop Nav) ================= -->
+    <header class="sticky top-0 z-30 bg-cream/90 backdrop-blur-md border-b border-cream-border">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- الشعار -->
+            <button onclick="App.navigate('home')" class="flex items-center gap-2.5 text-right focus:outline-none group">
+                <div class="w-11 h-11 rounded-2xl bg-honey-soft border border-honey/50 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+                    <!-- رسم SVG لنحلة لطيفة -->
+                    <svg class="w-7 h-7 animate-bee" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="24" cy="18" rx="9" ry="6" transform="rotate(-25 24 18)" fill="#E3F2FD" stroke="#8FA893" stroke-width="2"/>
+                        <ellipse cx="40" cy="18" rx="9" ry="6" transform="rotate(25 40 18)" fill="#E3F2FD" stroke="#8FA893" stroke-width="2"/>
+                        <ellipse cx="32" cy="36" rx="15" ry="12" fill="#F4C95D" stroke="#5C4D3C" stroke-width="2.5"/>
+                        <path d="M23 26.5C23 26.5 21 36 23 45.5" stroke="#5C4D3C" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M32 24.5C32 24.5 31 36 32 47.5" stroke="#5C4D3C" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M41 26.5C41 26.5 43 36 41 45.5" stroke="#5C4D3C" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="15" cy="34" r="2" fill="#5C4D3C"/>
+                        <path d="M14 40C15.5 41.5 17.5 41.5 19 40" stroke="#5C4D3C" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M47 36L52 36" stroke="#5C4D3C" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold text-ink leading-tight">مفكرة النحلات</h1>
+                    <p class="text-xs text-sage-dark font-medium">رفيقتكِ في الطاعات والقرآن 🌸</p>
+                </div>
+            </button>
+
+            <!-- قائمة التنقل للحواسيب والأجهزة اللوحية -->
+            <nav class="hidden md:flex items-center gap-1.5 bg-cream-warm p-1.5 rounded-full border border-cream-border" aria-label="التنقل الرئيسي">
+                <button data-nav="home" onclick="App.navigate('home')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">🏠 الرئيسية</button>
+                <button data-nav="record" onclick="App.navigate('record')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">🐝 تسجيل اليوم</button>
+                <button data-nav="calendar" onclick="App.navigate('calendar')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">🗓️ رحلتي</button>
+                <button data-nav="weekly" onclick="App.navigate('weekly')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">🌟 حصاد الأسبوع</button>
+                <button data-nav="stats" onclick="App.navigate('stats')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">📊 إحصاءاتي</button>
+                <button data-nav="settings" onclick="App.navigate('settings')" class="nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold transition-all">⚙️ الإعدادات</button>
+            </nav>
+
+            <!-- شارة اسم النحلة السريعة -->
+            <button onclick="App.openNameModal()" class="flex items-center gap-1.5 bg-sage-soft hover:bg-sage-light/40 text-ink px-3 py-1.5 rounded-full border border-sage-light/60 text-xs sm:text-sm font-bold transition-colors">
+                <span>👧</span>
+                <span id="header-student-name" class="max-w-[95px] sm:max-w-[140px] truncate">نحلتنا الجميلة</span>
+                <span class="text-sage-dark text-xs">✏️</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= المحتوى الرئيسي (Dynamic Views) ================= -->
+    <main id="app-container" class="flex-1 max-w-4xl w-full mx-auto px-4 pt-5 pb-8">
+        <!-- يتم حقن الصفحات ديناميكياً هنا -->
+    </main>
+
+    <!-- ================= شريط التنقل السفلي للهواتف ================= -->
+    <nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-cream-border shadow-nav px-1 py-1.5" aria-label="التنقل السفلي">
+        <div class="grid grid-cols-6 gap-0.5 max-w-lg mx-auto">
+            <button data-nav="home" onclick="App.navigate('home')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">🏠</span>
+                <span>الرئيسية</span>
+            </button>
+            <button data-nav="record" onclick="App.navigate('record')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">🐝</span>
+                <span>التسجيل</span>
+            </button>
+            <button data-nav="calendar" onclick="App.navigate('calendar')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">🗓️</span>
+                <span>رحلتي</span>
+            </button>
+            <button data-nav="weekly" onclick="App.navigate('weekly')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">🌟</span>
+                <span>الأسبوع</span>
+            </button>
+            <button data-nav="stats" onclick="App.navigate('stats')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">📊</span>
+                <span>إحصاءاتي</span>
+            </button>
+            <button data-nav="settings" onclick="App.navigate('settings')" class="nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold transition-all">
+                <span class="text-lg leading-none mb-1">⚙️</span>
+                <span>الإعدادات</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ================= نافذة منبثقة مخصصة (Custom Modal - بديل alert/confirm) ================= -->
+    <div id="custom-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-ink/40 backdrop-blur-xs transition-opacity">
+        <div class="bg-white rounded-card max-w-md w-full p-6 border-2 border-cream-border shadow-xl transform transition-all" id="custom-modal-box">
+            <div class="text-center">
+                <div id="modal-icon" class="text-4xl mb-3">🐝</div>
+                <h3 id="modal-title" class="text-xl font-extrabold text-ink mb-2">عنوان الرسالة</h3>
+                <div id="modal-body" class="text-sm sm:text-base text-ink-muted mb-5 leading-relaxed">محتوى الرسالة</div>
+                <div id="modal-input-wrapper" class="hidden mb-5">
+                    <input type="text" id="modal-input" class="w-full px-4 py-3 rounded-2xl border-2 border-sage-light focus:border-sage-dark focus:outline-none text-center font-bold text-ink bg-cream" placeholder="اكتبي اسمكِ الجميل هنا...">
+                </div>
+                <div id="modal-actions" class="flex flex-col sm:flex-row gap-2.5 justify-center">
+                    <!-- أزرار النافذة -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= إشعار عائم لطيف (Toast Notification) ================= -->
+    <div id="toast-banner" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 hidden items-center gap-2.5 bg-ink text-white px-5 py-3 rounded-full shadow-lg text-sm font-bold transition-all">
+        <span id="toast-icon">🐝</span>
+        <span id="toast-text">تم الحفظ بنجاح!</span>
+    </div>
+
+    <!-- =========================================================================
+         البنية البرمجية المنظمة (Storage Layer + Reports Layer + UI/App Layer)
+         ========================================================================= -->
+    <script>
+        /**
+         * =========================================================================
+         * 1. طبقة التخزين والتعامل مع التواريخ المحلية (StorageModule)
+         * مسؤولة عن إدارة LocalStorage، التوقيت المحلي YYYY-MM-DD، وعدم تكرار السجلات.
+         * =========================================================================
+         */
+        const StorageModule = (() => {
+            const STORAGE_KEY = 'bee_worship_tracker_v1';
+
+            // الحالة الافتراضية للتطبيق
+            const defaultState = {
+                profile: {
+                    name: '',
+                    weekStartDay: 6 // 6 = السبت في JavaScript getDay()
+                },
+                records: {} // كائن مفاتيحه هي التاريخ بصيغة YYYY-MM-DD لضمان عدم التكرار مطلقاً
+            };
+
+            /**
+             * إرجاع تاريخ اليوم أو أي كائن Date بصيغة YYYY-MM-DD حسب التوقيت المحلي بدقة
+             */
+            function toLocalDateStr(dateObj = new Date()) {
+                const year = dateObj.getFullYear();
+                const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+                const day = String(dateObj.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            /**
+             * تحويل نص YYYY-MM-DD إلى كائن Date محلي (منتصف النهار لتجنب مشاكل التوقيت الصيفي)
+             */
+            function parseLocalDate(dateStr) {
+                if (!dateStr || typeof dateStr !== 'string') return new Date();
+                const parts = dateStr.split('-').map(Number);
+                if (parts.length !== 3) return new Date();
+                return new Date(parts[0], parts[1] - 1, parts[2], 12, 0, 0);
+            }
+
+            /**
+             * تحميل البيانات بالكامل من LocalStorage مع معالجة الأخطاء
+             */
+            function loadData() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    if (!raw) return JSON.parse(JSON.stringify(defaultState));
+                    const parsed = JSON.parse(raw);
+                    return {
+                        profile: {
+                            name: parsed.profile?.name || '',
+                            weekStartDay: 6
+                        },
+                        records: (parsed.records && typeof parsed.records === 'object') ? parsed.records : {}
+                    };
+                } catch (error) {
+                    console.error('خطأ في قراءة البيانات من المتصفح:', error);
+                    return JSON.parse(JSON.stringify(defaultState));
+                }
+            }
+
+            /**
+             * حفظ البيانات بالكامل في LocalStorage
+             */
+            function saveData(data) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                    return true;
+                } catch (error) {
+                    console.error('خطأ في حفظ البيانات:', error);
+                    return false;
+                }
+            }
+
+            /**
+             * جلب اسم الطالبة
+             */
+            function getStudentName() {
+                const data = loadData();
+                return data.profile.name.trim();
+            }
+
+            /**
+             * تحديث اسم الطالبة
+             */
+            function setStudentName(name) {
+                const data = loadData();
+                data.profile.name = (name || '').trim();
+                return saveData(data);
+            }
+
+            /**
+             * جلب سجل يوم محدد بصيغة YYYY-MM-DD
+             */
+            function getRecord(dateStr) {
+                const data = loadData();
+                return data.records[dateStr] || null;
+            }
+
+            /**
+             * حفظ أو تحديث سجل يوم محدد (يمنع إنشاء سجلين لنفس اليوم لأن المفتاح هو YYYY-MM-DD)
+             */
+            function saveRecord(dateStr, recordPayload) {
+                const data = loadData();
+                const existing = data.records[dateStr];
+                data.records[dateStr] = {
+                    date: dateStr,
+                    prayers: {
+                        fajr: recordPayload.prayers?.fajr || null,
+                        dhuhr: recordPayload.prayers?.dhuhr || null,
+                        asr: recordPayload.prayers?.asr || null,
+                        maghrib: recordPayload.prayers?.maghrib || null,
+                        isha: recordPayload.prayers?.isha || null
+                    },
+                    parents: recordPayload.parents || null,
+                    quranLines: Math.max(0, Math.min(100, parseInt(recordPayload.quranLines, 10) || 0)),
+                    extraDeeds: Array.isArray(recordPayload.extraDeeds) ? recordPayload.extraDeeds : [],
+                    customDeed: (recordPayload.customDeed || '').trim(),
+                    createdAt: existing?.createdAt || new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                };
+                return saveData(data);
+            }
+
+            /**
+             * جلب جميع السجلات مرتبة تنازلياً أو تصاعدياً
+             */
+            function getAllRecords() {
+                const data = loadData();
+                return data.records;
+            }
+
+            /**
+             * تصدير نسخة احتياطية JSON
+             */
+            function exportJSON() {
+                const data = loadData();
+                return JSON.stringify(data, null, 2);
+            }
+
+            /**
+             * استيراد نسخة احتياطية JSON والتحقق من سلامتها
+             */
+            function importJSON(jsonString) {
+                try {
+                    const parsed = JSON.parse(jsonString);
+                    if (!parsed || typeof parsed !== 'object' || typeof parsed.records !== 'object') {
+                        return { ok: false, message: 'صيغة الملف غير صالحة. تأكدي من اختيار ملف مفكرة النحلات الصحيح.' };
+                    }
+                    const cleanData = {
+                        profile: {
+                            name: String(parsed.profile?.name || ''),
+                            weekStartDay: 6
+                        },
+                        records: {}
+                    };
+                    // التحقق من صحة كل سجل تاريخي
+                    Object.keys(parsed.records).forEach(dateKey => {
+                        if (/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) {
+                            const r = parsed.records[dateKey];
+                            cleanData.records[dateKey] = {
+                                date: dateKey,
+                                prayers: {
+                                    fajr: r.prayers?.fajr || null,
+                                    dhuhr: r.prayers?.dhuhr || null,
+                                    asr: r.prayers?.asr || null,
+                                    maghrib: r.prayers?.maghrib || null,
+                                    isha: r.prayers?.isha || null
+                                },
+                                parents: r.parents || null,
+                                quranLines: Math.max(0, Math.min(100, parseInt(r.quranLines, 10) || 0)),
+                                extraDeeds: Array.isArray(r.extraDeeds) ? r.extraDeeds : [],
+                                customDeed: String(r.customDeed || ''),
+                                createdAt: r.createdAt || new Date().toISOString(),
+                                updatedAt: r.updatedAt || new Date().toISOString()
+                            };
+                        }
+                    });
+                    saveData(cleanData);
+                    return { ok: true, count: Object.keys(cleanData.records).length };
+                } catch (e) {
+                    return { ok: false, message: 'تعذر قراءة الملف، تأكدي أنه ملف JSON سليم.' };
+                }
+            }
+
+            /**
+             * مسح جميع البيانات
+             */
+            function clearAllData() {
+                localStorage.removeItem(STORAGE_KEY);
+            }
+
+            return {
+                toLocalDateStr,
+                parseLocalDate,
+                getStudentName,
+                setStudentName,
+                getRecord,
+                saveRecord,
+                getAllRecords,
+                exportJSON,
+                importJSON,
+                clearAllData
+            };
+        })();
+
+
+        /**
+         * =========================================================================
+         * 2. طبقة التقارير والإحصاءات ورسائل واتساب (ReportsModule)
+         * مسؤولة عن الحسابات الدقيقة، التقارير الأسبوعية، وروابط واتساب المشفرة.
+         * =========================================================================
+         */
+        const ReportsModule = (() => {
+            const ARABIC_DAYS = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+            const ARABIC_MONTHS = [
+                'يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو',
+                'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
+            ];
+
+            const PRAYER_META = [
+                { key: 'fajr', label: 'الفجر', icon: '🌅' },
+                { key: 'dhuhr', label: 'الظهر', icon: '☀️' },
+                { key: 'asr', label: 'العصر', icon: '🌤️' },
+                { key: 'maghrib', label: 'المغرب', icon: '🌇' },
+                { key: 'isha', label: 'العشاء', icon: '🌙' }
+            ];
+
+            const PRAYER_STATUS_LABELS = {
+                ontime: 'في وقتها',
+                present: 'حاضر',
+                qada: 'قضاء',
+                late: 'قضاء', // دعم التوافق مع السجلات القديمة
+                missed: 'لم أصلِّها'
+            };
+
+            const PARENTS_LABELS = {
+                excellent: '🌸 كنت بارة بهما وأحسنت إليهما',
+                tried: '💛 حاولت واجتهدت',
+                improve: '🌱 أحتاج أن أحسن أكثر'
+            };
+
+            /**
+             * تنسيق التاريخ بالعربية للعرض (مثال: السبت، 15 مارس 2025)
+             */
+            function formatArabicFullDate(dateStr) {
+                const d = StorageModule.parseLocalDate(dateStr);
+                const dayName = ARABIC_DAYS[d.getDay()];
+                const dayNum = d.getDate();
+                const monthName = ARABIC_MONTHS[d.getMonth()];
+                const year = d.getFullYear();
+                return `${dayName}، ${dayNum} ${monthName} ${year}`;
+            }
+
+            /**
+             * إرجاع اسم اليوم بالعربية من تاريخ YYYY-MM-DD
+             */
+            function getArabicDayName(dateStr) {
+                const d = StorageModule.parseLocalDate(dateStr);
+                return ARABIC_DAYS[d.getDay()];
+            }
+
+            /**
+             * حساب نسبة إنجاز يوم واحد بدقة (لأيام مسجلة فقط)
+             * الصلوات المؤداة (في وقتها = 100%، حاضر = 100%، قضاء = 50%، لم أصلها = 0%) تمثل 60%
+             * بر الوالدين يمثل 20%
+             * ورد القرآن يمثل 20%
+             */
+            function calculateDailyScore(record) {
+                if (!record) return 0;
+                let prayerPoints = 0;
+                PRAYER_META.forEach(p => {
+                    const st = record.prayers?.[p.key];
+                    if (st === 'ontime' || st === 'present') prayerPoints += 1;
+                    else if (st === 'qada' || st === 'late') prayerPoints += 0.5;
+                });
+                const prayerScore = (prayerPoints / 5) * 60;
+
+                let parentsScore = 0;
+                if (record.parents === 'excellent') parentsScore = 20;
+                else if (record.parents === 'tried') parentsScore = 14;
+                else if (record.parents === 'improve') parentsScore = 8;
+
+                const quranScore = (record.quranLines > 0) ? 20 : 0;
+
+                return Math.round(prayerScore + parentsScore + quranScore);
+            }
+
+            /**
+             * حساب بداية الأسبوع (السبت) ونهايته (الجمعة) لأي تاريخ مرجعي
+             */
+            function getWeekRangeSaturdayToFriday(refDateStr) {
+                const ref = StorageModule.parseLocalDate(refDateStr);
+                const day = ref.getDay(); // 0=الأحد .. 6=السبت
+                const diffToSaturday = (day === 6) ? 0 : (day + 1);
+                
+                const saturday = new Date(ref);
+                saturday.setDate(ref.getDate() - diffToSaturday);
+
+                const daysList = [];
+                for (let i = 0; i < 7; i++) {
+                    const current = new Date(saturday);
+                    current.setDate(saturday.getDate() + i);
+                    const dStr = StorageModule.toLocalDateStr(current);
+                    daysList.push({
+                        dateStr: dStr,
+                        dayName: ARABIC_DAYS[current.getDay()],
+                        shortDate: `${current.getDate()}/${current.getMonth() + 1}`
+                    });
+                }
+                return {
+                    startDate: daysList[0].dateStr,
+                    endDate: daysList[6].dateStr,
+                    days: daysList
+                };
+            }
+
+            /**
+             * إنشاء تقرير أسبوعي شامل من السبت إلى الجمعة
+             */
+            function generateWeeklyReport(refDateStr) {
+                const range = getWeekRangeSaturdayToFriday(refDateStr);
+                const allRecords = StorageModule.getAllRecords();
+
+                const prayersOnTime = { fajr: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 };
+                let totalOnTimeCount = 0;
+                let totalPresentCount = 0;
+                let totalQadaCount = 0;
+                let totalMissedCount = 0;
+
+                let totalQuranLines = 0;
+                let recordedDaysCount = 0;
+                let bestQuranDay = null;
+
+                const parentsCounts = { excellent: 0, tried: 0, improve: 0 };
+
+                const daysRows = range.days.map(dayInfo => {
+                    const rec = allRecords[dayInfo.dateStr] || null;
+                    if (rec) {
+                        recordedDaysCount++;
+
+                        // حساب الصلوات للأيام المسجلة فقط
+                        PRAYER_META.forEach(p => {
+                            const st = rec.prayers?.[p.key];
+                            if (st === 'ontime') {
+                                prayersOnTime[p.key]++;
+                                totalOnTimeCount++;
+                            } else if (st === 'present') {
+                                totalPresentCount++;
+                            } else if (st === 'qada' || st === 'late') {
+                                totalQadaCount++;
+                            } else if (st === 'missed') {
+                                totalMissedCount++;
+                            }
+                        });
+
+                        // حساب القرآن
+                        const lines = Number(rec.quranLines) || 0;
+                        totalQuranLines += lines;
+                        if (lines > 0 && (!bestQuranDay || lines > bestQuranDay.lines)) {
+                            bestQuranDay = { dayName: dayInfo.dayName, lines, dateStr: dayInfo.dateStr };
+                        }
+
+                        // حساب بر الوالدين
+                        if (rec.parents && parentsCounts.hasOwnProperty(rec.parents)) {
+                            parentsCounts[rec.parents]++;
+                        }
+                    }
+
+                    return {
+                        ...dayInfo,
+                        record: rec,
+                        isRecorded: Boolean(rec)
+                    };
+                });
+
+                const avgQuranLines = recordedDaysCount > 0
+                    ? (totalQuranLines / recordedDaysCount).toFixed(1).replace(/\.0$/, '')
+                    : 0;
+
+                return {
+                    startDate: range.startDate,
+                    endDate: range.endDate,
+                    recordedDaysCount,
+                    prayersOnTime,
+                    totalOnTimeCount,
+                    totalPresentCount,
+                    totalQadaCount,
+                    totalMissedCount,
+                    totalQuranLines,
+                    avgQuranLines,
+                    bestQuranDay,
+                    parentsCounts,
+                    daysRows
+                };
+            }
+
+            /**
+             * حساب سلسلة الأيام المتتالية (Current Streak & Longest Streak)
+             */
+            function calculateStreaks() {
+                const allRecords = StorageModule.getAllRecords();
+                const dates = Object.keys(allRecords).sort();
+                if (dates.length === 0) return { currentStreak: 0, longestStreak: 0 };
+
+                // أطول سلسلة متتالية
+                let longest = 1;
+                let tempStreak = 1;
+                for (let i = 1; i < dates.length; i++) {
+                    const prev = StorageModule.parseLocalDate(dates[i - 1]);
+                    const curr = StorageModule.parseLocalDate(dates[i]);
+                    const diffDays = Math.round((curr - prev) / (1000 * 60 * 60 * 24));
+                    if (diffDays === 1) {
+                        tempStreak++;
+                        if (tempStreak > longest) longest = tempStreak;
+                    } else if (diffDays > 1) {
+                        tempStreak = 1;
+                    }
+                }
+
+                // السلسلة الحالية
+                const todayStr = StorageModule.toLocalDateStr(new Date());
+                const yesterdayDate = new Date();
+                yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+                const yesterdayStr = StorageModule.toLocalDateStr(yesterdayDate);
+
+                let current = 0;
+                let checkDate = null;
+
+                if (allRecords[todayStr]) {
+                    checkDate = StorageModule.parseLocalDate(todayStr);
+                } else if (allRecords[yesterdayStr]) {
+                    checkDate = StorageModule.parseLocalDate(yesterdayStr);
+                }
+
+                while (checkDate) {
+                    const dStr = StorageModule.toLocalDateStr(checkDate);
+                    if (allRecords[dStr]) {
+                        current++;
+                        checkDate.setDate(checkDate.getDate() - 1);
+                    } else {
+                        break;
+                    }
+                }
+
+                return { currentStreak: current, longestStreak: longest };
+            }
+
+            /**
+             * حساب الإحصاءات العامة الدقيقة (دون خلط الأيام غير المسجلة بالأيام المسجلة)
+             */
+            function calculateGlobalStats() {
+                const allRecords = StorageModule.getAllRecords();
+                const dates = Object.keys(allRecords).sort();
+                const now = new Date();
+                const currentMonthPrefix = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+
+                let totalOnTimePrayers = 0;
+                let totalPresentPrayers = 0;
+                let totalQadaPrayers = 0;
+                let totalMissedPrayers = 0;
+                let totalRecordedPrayerSlots = 0;
+                let monthQuranLines = 0;
+                let totalAllTimeQuranLines = 0;
+
+                dates.forEach(dateStr => {
+                    const rec = allRecords[dateStr];
+                    PRAYER_META.forEach(p => {
+                        const st = rec.prayers?.[p.key];
+                        if (st === 'ontime' || st === 'present' || st === 'qada' || st === 'late' || st === 'missed') {
+                            totalRecordedPrayerSlots++;
+                            if (st === 'ontime') totalOnTimePrayers++;
+                            else if (st === 'present') totalPresentPrayers++;
+                            else if (st === 'qada' || st === 'late') totalQadaPrayers++;
+                            else if (st === 'missed') totalMissedPrayers++;
+                        }
+                    });
+
+                    const lines = Number(rec.quranLines) || 0;
+                    totalAllTimeQuranLines += lines;
+                    if (dateStr.startsWith(currentMonthPrefix)) {
+                        monthQuranLines += lines;
+                    }
+                });
+
+                // نسبة الالتزام بالصلوات المؤداة في وقتها أو حاضراً خلال الأيام المسجلة فقط
+                const performedInTimeOrPresent = totalOnTimePrayers + totalPresentPrayers;
+                const prayerCommitmentPct = totalRecordedPrayerSlots > 0
+                    ? Math.round((performedInTimeOrPresent / totalRecordedPrayerSlots) * 100)
+                    : 0;
+
+                const streaks = calculateStreaks();
+
+                // تطور الإنجاز لآخر 4 أسابيع
+                const weeklyTrend = [];
+                for (let w = 3; w >= 0; w--) {
+                    const ref = new Date();
+                    ref.setDate(ref.getDate() - (w * 7));
+                    const refStr = StorageModule.toLocalDateStr(ref);
+                    const rep = generateWeeklyReport(refStr);
+                    let sumScore = 0;
+                    rep.daysRows.forEach(r => {
+                        if (r.isRecorded) sumScore += calculateDailyScore(r.record);
+                    });
+                    const avgScore = rep.recordedDaysCount > 0 ? Math.round(sumScore / rep.recordedDaysCount) : 0;
+                    weeklyTrend.push({
+                        label: w === 0 ? 'هذا الأسبوع' : (w === 1 ? 'الأسبوع الماضي' : `قبل ${w} أسابيع`),
+                        range: `${rep.startDate.slice(5)} إلى ${rep.endDate.slice(5)}`,
+                        recordedDays: rep.recordedDaysCount,
+                        avgScore,
+                        quranLines: rep.totalQuranLines
+                    });
+                }
+
+                return {
+                    totalRecordedDays: dates.length,
+                    totalOnTimePrayers,
+                    totalPresentPrayers,
+                    totalQadaPrayers,
+                    totalMissedPrayers,
+                    prayerCommitmentPct,
+                    monthQuranLines,
+                    totalAllTimeQuranLines,
+                    longestStreak: streaks.longestStreak,
+                    currentStreak: streaks.currentStreak,
+                    weeklyTrend
+                };
+            }
+
+            /**
+             * بناء رسالة واتساب اليومية المشفرة
+             */
+            function buildDailyWhatsAppMessage(record) {
+                const studentName = StorageModule.getStudentName() || 'نحلة مجتهدة';
+                const dayName = getArabicDayName(record.date);
+                const dateFormatted = record.date;
+
+                const getPText = (key) => PRAYER_STATUS_LABELS[record.prayers?.[key]] || 'غير محدد';
+                const parentsText = PARENTS_LABELS[record.parents] || 'لم يُحدد';
+
+                const deedsList = [...(record.extraDeeds || [])];
+                if (record.customDeed) deedsList.push(record.customDeed);
+                const deedsText = deedsList.length > 0 ? deedsList.join('، ') : 'لا يوجد إضافات اليوم';
+
+                const message = 
+`السلام عليكم ورحمة الله وبركاته 🌸
+
+إليكِ تقرير إنجازاتي اليومي 🐝
+
+👧 اسم النحلة: ${studentName}
+📅 اليوم: ${dayName}
+🗓️ التاريخ: ${dateFormatted}
+
+🌷 الصلوات:
+🌅 الفجر: ${getPText('fajr')}
+☀️ الظهر: ${getPText('dhuhr')}
+🌤️ العصر: ${getPText('asr')}
+🌇 المغرب: ${getPText('maghrib')}
+🌙 العشاء: ${getPText('isha')}
+
+🤍 رضا الوالدين:
+${parentsText}
+
+📖 ورد القرآن الكريم:
+${record.quranLines || 0} سطراً.
+
+🌱 إنجازات إضافية:
+${deedsText}
+
+الحمد لله على نعمة الطاعة، وأسأل الله أن يجعلني من أهل القرآن وأن يعينني على الاستمرار. 🤍`;
+
+                return `https://wa.me/?text=${encodeURIComponent(message)}`;
+            }
+
+            /**
+             * بناء رسالة واتساب الأسبوعية المشفرة
+             */
+            function buildWeeklyWhatsAppMessage(weeklyReport) {
+                const studentName = StorageModule.getStudentName() || 'نحلة مجتهدة';
+
+                const shortPrayerCode = (st) => {
+                    if (st === 'ontime') return '🌟';
+                    if (st === 'present') return '✅';
+                    if (st === 'qada' || st === 'late') return '⏰';
+                    return '⚪';
+                };
+
+                const daysSummaryLines = weeklyReport.daysRows.map(row => {
+                    if (!row.isRecorded) {
+                        return `• ${row.dayName}: لم يتم التسجيل`;
+                    }
+                    const p = row.record.prayers || {};
+                    const icons = `${shortPrayerCode(p.fajr)}${shortPrayerCode(p.dhuhr)}${shortPrayerCode(p.asr)}${shortPrayerCode(p.maghrib)}${shortPrayerCode(p.isha)}`;
+                    return `• ${row.dayName}: صلوات (${icons}) | قرآن: ${row.record.quranLines || 0} سطر`;
+                }).join('\n');
+
+                const message = 
+`السلام عليكم ورحمة الله وبركاته 🌸
+
+🌟 حصاد الأسبوع في مفكرة النحلات 🐝
+
+👧 اسم النحلة: ${studentName}
+🗓️ الفترة: من السبت (${weeklyReport.startDate}) إلى الجمعة (${weeklyReport.endDate})
+📅 أيام التسجيل: ${weeklyReport.recordedDaysCount} من 7 أيام
+
+🌷 ملخص الصلوات:
+- في وقتها: ${weeklyReport.totalOnTimeCount} صلاة (الفجر: ${weeklyReport.prayersOnTime.fajr}، الظهر: ${weeklyReport.prayersOnTime.dhuhr}، العصر: ${weeklyReport.prayersOnTime.asr}، المغرب: ${weeklyReport.prayersOnTime.maghrib}، العشاء: ${weeklyReport.prayersOnTime.isha})
+- حاضر: ${weeklyReport.totalPresentCount} | قضاء: ${weeklyReport.totalQadaCount} | لم أصلِّها: ${weeklyReport.totalMissedCount}
+
+📖 ملخص القرآن الكريم:
+- إجمالي الأسطر: ${weeklyReport.totalQuranLines} سطراً (بمتوسط ${weeklyReport.avgQuranLines} سطر يومياً)
+
+🤍 ملخص برّ الوالدين:
+- 🌸 إحسان وبرّ: ${weeklyReport.parentsCounts.excellent} أيام | 💛 اجتهاد: ${weeklyReport.parentsCounts.tried} أيام | 🌱 تحسين: ${weeklyReport.parentsCounts.improve} أيام
+
+📋 تفاصيل الأسبوع (🌟 في وقتها | ✅ حاضر | ⏰ قضاء | ⚪ لم أصلِّها):
+${daysSummaryLines}
+
+بارك الله في جهودكِ معلمتي الغالية 🤍`;
+
+                return `https://wa.me/?text=${encodeURIComponent(message)}`;
+            }
+
+            return {
+                ARABIC_DAYS,
+                ARABIC_MONTHS,
+                PRAYER_META,
+                PRAYER_STATUS_LABELS,
+                PARENTS_LABELS,
+                formatArabicFullDate,
+                getArabicDayName,
+                calculateDailyScore,
+                getWeekRangeSaturdayToFriday,
+                generateWeeklyReport,
+                calculateStreaks,
+                calculateGlobalStats,
+                buildDailyWhatsAppMessage,
+                buildWeeklyWhatsAppMessage
+            };
+        })();
+
+
+        /**
+         * =========================================================================
+         * 3. طبقة الواجهة والتفاعل (AppModule)
+         * مسؤولة عن عرض الصفحات، التنقل، النماذج التفاعلية، والرسائل التشجيعية.
+         * =========================================================================
+         */
+        const App = (() => {
+            const ENCOURAGING_QUOTES = [
+                'كل صلاة تقرّبكِ من الله وتنير دربكِ 🌸',
+                'خطوة صغيرة كل يوم تصنع إنجازاً كبيراً 🐝',
+                'القرآن نور قلبكِ وربيع صدركِ 📖',
+                'أحسنتِ، استمري يا بطلة الحلقة! ✨',
+                'النحلة المجتهدة تجمع رحيق الطاعات بحب 🍯',
+                'برّكِ بوالديكِ بابٌ واسع إلى الجنة 🤍'
+            ];
+
+            const EXTRA_DEEDS_OPTIONS = [
+                { id: 'adhkar_day', label: 'أذكار الصباح والمساء', icon: '📿' },
+                { id: 'adhkar_prayer', label: 'أذكار ما بعد الصلاة', icon: '🤲' },
+                { id: 'help_family', label: 'مساعدة الأهل', icon: '🏡' },
+                { id: 'sadaqah', label: 'صدقة', icon: '💝' }
+            ];
+
+            let state = {
+                currentView: 'home',
+                quoteIndex: Math.floor(Math.random() * ENCOURAGING_QUOTES.length),
+                // حالة نموذج التسجيل
+                formDate: StorageModule.toLocalDateStr(new Date()),
+                draftRecord: null,
+                justSavedDate: null,
+                // حالة التقويم
+                calendarYear: new Date().getFullYear(),
+                calendarMonth: new Date().getMonth(),
+                selectedCalendarDate: StorageModule.toLocalDateStr(new Date()),
+                // حالة التقرير الأسبوعي
+                weeklyRefDate: StorageModule.toLocalDateStr(new Date())
+            };
+
+            /**
+             * تهيئة التطبيق عند التشغيل
+             */
+            function init() {
+                updateHeaderName();
+                loadDraftForDate(state.formDate);
+                render();
+            }
+
+            /**
+             * تحديث الاسم المعروض في الشريط العلوي
+             */
+            function updateHeaderName() {
+                const name = StorageModule.getStudentName();
+                const el = document.getElementById('header-student-name');
+                if (el) {
+                    el.textContent = name || 'نحلتنا الجميلة';
+                }
+            }
+
+            /**
+             * التنقل بين الصفحات
+             */
+            function navigate(viewName, options = {}) {
+                state.currentView = viewName;
+                if (viewName === 'record') {
+                    const targetDate = options.date || state.formDate || StorageModule.toLocalDateStr(new Date());
+                    state.formDate = targetDate;
+                    state.justSavedDate = null;
+                    loadDraftForDate(targetDate);
+                }
+                if (viewName === 'calendar' && options.date) {
+                    const d = StorageModule.parseLocalDate(options.date);
+                    state.calendarYear = d.getFullYear();
+                    state.calendarMonth = d.getMonth();
+                    state.selectedCalendarDate = options.date;
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                render();
+            }
+
+            /**
+             * تحميل بيانات يوم معين إلى مسودة النموذج (أو إنشاء مسودة فارغة)
+             */
+            function loadDraftForDate(dateStr) {
+                const existing = StorageModule.getRecord(dateStr);
+                if (existing) {
+                    state.draftRecord = JSON.parse(JSON.stringify(existing));
+                } else {
+                    state.draftRecord = {
+                        date: dateStr,
+                        prayers: { fajr: null, dhuhr: null, asr: null, maghrib: null, isha: null },
+                        parents: null,
+                        quranLines: 0,
+                        extraDeeds: [],
+                        customDeed: ''
+                    };
+                }
+            }
+
+            /**
+             * تحديث شريط التنقل النشط
+             */
+            function updateNavHighlight() {
+                document.querySelectorAll('[data-nav]').forEach(btn => {
+                    const isActive = btn.getAttribute('data-nav') === state.currentView;
+                    if (btn.classList.contains('nav-btn-desktop')) {
+                        btn.className = isActive
+                            ? 'nav-btn-desktop px-4 py-2 rounded-full text-sm font-extrabold bg-sage text-white shadow-xs transition-all'
+                            : 'nav-btn-desktop px-4 py-2 rounded-full text-sm font-bold text-ink-muted hover:text-ink hover:bg-white/60 transition-all';
+                    } else {
+                        btn.className = isActive
+                            ? 'nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-extrabold bg-sage-soft text-sage-dark transition-all'
+                            : 'nav-btn-mobile flex flex-col items-center justify-center py-1.5 rounded-2xl text-[11px] font-bold text-ink-muted transition-all';
+                    }
+                });
+            }
+
+            /**
+             * عرض إشعار عائم لطيف
+             */
+            let toastTimer = null;
+            function showToast(message, icon = '🐝') {
+                const banner = document.getElementById('toast-banner');
+                const textEl = document.getElementById('toast-text');
+                const iconEl = document.getElementById('toast-icon');
+                if (!banner) return;
+
+                textEl.textContent = message;
+                iconEl.textContent = icon;
+                banner.classList.remove('hidden');
+                banner.classList.add('flex');
+
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    banner.classList.add('hidden');
+                    banner.classList.remove('flex');
+                }, 3200);
+            }
+
+            /**
+             * نافذة منبثقة مخصصة (بديل alert / confirm / prompt)
+             */
+            function showModal({ icon = '🐝', title = '', body = '', showInput = false, inputValue = '', actions = [] }) {
+                const modal = document.getElementById('custom-modal');
+                document.getElementById('modal-icon').textContent = icon;
+                document.getElementById('modal-title').textContent = title;
+                document.getElementById('modal-body').innerHTML = body;
+
+                const inputWrap = document.getElementById('modal-input-wrapper');
+                const inputEl = document.getElementById('modal-input');
+                if (showInput) {
+                    inputWrap.classList.remove('hidden');
+                    inputEl.value = inputValue;
+                    setTimeout(() => inputEl.focus(), 100);
+                } else {
+                    inputWrap.classList.add('hidden');
+                }
+
+                const actionsContainer = document.getElementById('modal-actions');
+                actionsContainer.innerHTML = '';
+                actions.forEach(act => {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = act.className || 'px-5 py-2.5 rounded-xl font-bold text-sm';
+                    btn.textContent = act.label;
+                    btn.onclick = () => act.onClick(inputEl.value);
+                    actionsContainer.appendChild(btn);
+                });
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+
+            function closeModal() {
+                const modal = document.getElementById('custom-modal');
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+
+            /**
+             * فتح نافذة تعديل اسم الطالبة
+             */
+            function openNameModal() {
+                const currentName = StorageModule.getStudentName();
+                showModal({
+                    icon: '👧🐝',
+                    title: 'ما اسم نحلتنا المجتهدة؟',
+                    body: 'اكتبي اسمكِ ليظهر في مفكرتكِ وتقاريركِ الجميلة للمعلمة:',
+                    showInput: true,
+                    inputValue: currentName,
+                    actions: [
+                        {
+                            label: 'حفظ الاسم 🌸',
+                            className: 'bg-sage hover:bg-sage-dark text-white px-6 py-3 rounded-2xl font-extrabold text-sm shadow-sm w-full sm:w-auto',
+                            onClick: (val) => {
+                                StorageModule.setStudentName(val);
+                                updateHeaderName();
+                                closeModal();
+                                showToast('تم حفظ اسمكِ الجميل يا نحلتنا!', '🌸');
+                                render();
+                            }
+                        },
+                        {
+                            label: 'إلغاء',
+                            className: 'bg-cream-warm hover:bg-cream-border text-ink px-5 py-3 rounded-2xl font-bold text-sm w-full sm:w-auto',
+                            onClick: () => closeModal()
+                        }
+                    ]
+                });
+            }
+
+            /**
+             * تغيير العبارة التشجيعية في الصفحة الرئيسية
+             */
+            function nextQuote() {
+                state.quoteIndex = (state.quoteIndex + 1) % ENCOURAGING_QUOTES.length;
+                render();
+            }
+
+            /**
+             * =====================================================================
+             * الرسم الرئيسي للصفحة الحالية (Main Render)
+             * =====================================================================
+             */
+            function render() {
+                updateNavHighlight();
+                const container = document.getElementById('app-container');
+                if (!container) return;
+
+                let html = '';
+                switch (state.currentView) {
+                    case 'home':
+                        html = renderHomeView();
+                        break;
+                    case 'record':
+                        html = renderRecordView();
+                        break;
+                    case 'calendar':
+                        html = renderCalendarView();
+                        break;
+                    case 'weekly':
+                        html = renderWeeklyView();
+                        break;
+                    case 'stats':
+                        html = renderStatsView();
+                        break;
+                    case 'settings':
+                        html = renderSettingsView();
+                        break;
+                    default:
+                        html = renderHomeView();
+                }
+
+                container.innerHTML = `<div class="view-enter space-y-5">${html}</div>`;
+            }
+
+            /* =====================================================================
+               1. الصفحة الرئيسية (Home View)
+               ===================================================================== */
+            function renderHomeView() {
+                const todayStr = StorageModule.toLocalDateStr(new Date());
+                const formattedToday = ReportsModule.formatArabicFullDate(todayStr);
+                const studentName = StorageModule.getStudentName();
+                const todayRecord = StorageModule.getRecord(todayStr);
+                const todayScore = ReportsModule.calculateDailyScore(todayRecord);
+                const weeklyRep = ReportsModule.generateWeeklyReport(todayStr);
+                const streaks = ReportsModule.calculateStreaks();
+
+                // جلب آخر تسجيل محفوظ في المفكرة (سواء اليوم أو قبله)
+                const allRecords = StorageModule.getAllRecords();
+                const sortedDates = Object.keys(allRecords).sort().reverse();
+                const latestDate = sortedDates[0] || null;
+                const latestRecord = latestDate ? allRecords[latestDate] : null;
+
+                // حساب عدد الصلوات المؤداة اليوم (في وقتها + حاضر)
+                let todayPerformedPrayers = 0;
+                if (todayRecord) {
+                    ReportsModule.PRAYER_META.forEach(p => {
+                        const st = todayRecord.prayers?.[p.key];
+                        if (st === 'ontime' || st === 'present') todayPerformedPrayers++;
+                    });
+                }
+
+                return `
+                    <!-- بطاقة الترحيب الرئيسية -->
+                    <section class="bee-card p-6 sm:p-7 bg-gradient-to-bl from-white via-cream to-honey-soft/60 relative overflow-hidden">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-2">
+                                <div class="inline-flex items-center gap-2 bg-white/90 border border-cream-border px-3.5 py-1 rounded-full text-xs font-bold text-sage-dark">
+                                    <span>📅</span>
+                                    <span>${formattedToday}</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-3xl font-extrabold text-ink leading-snug">
+                                    أهلاً بنحلتنا المجتهدة ${studentName ? `<span class="text-sage-dark">${escapeHtml(studentName)}</span>` : ''} 🐝
+                                </h2>
+                                <button onclick="App.nextQuote()" class="text-right group flex items-center gap-2 text-sm sm:text-base text-ink-muted font-bold hover:text-ink transition-colors">
+                                    <span class="text-honey-dark">✨</span>
+                                    <span>${ENCOURAGING_QUOTES[state.quoteIndex]}</span>
+                                    <span class="text-xs opacity-60 group-hover:opacity-100">🔄</span>
+                                </button>
+                            </div>
+
+                            <!-- بطاقة الاسم السريعة -->
+                            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 bg-white/80 p-3.5 rounded-2xl border border-cream-border shrink-0">
+                                <div class="text-right sm:text-left">
+                                    <span class="text-[11px] text-ink-muted block font-bold">اسم الطالبة</span>
+                                    <span class="text-sm font-extrabold text-ink">${studentName ? escapeHtml(studentName) : 'لم يُكتب بعد'}</span>
+                                </div>
+                                <button onclick="App.openNameModal()" class="px-3 py-1.5 rounded-xl bg-sage-soft hover:bg-sage text-sage-dark hover:text-white text-xs font-extrabold transition-colors">
+                                    ${studentName ? 'تعديل الاسم ✏️' : 'اكتبي اسمكِ ✍️'}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- مؤشر إنجاز اليوم -->
+                        <div class="mt-6 bg-white/90 rounded-2xl p-4 border border-cream-border">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-extrabold text-ink flex items-center gap-1.5">
+                                    <span>🍯</span>
+                                    <span>نسبة إنجاز عبادات اليوم</span>
+                                </span>
+                                <span class="text-lg font-extrabold text-sage-dark">${todayScore}%</span>
+                            </div>
+                            <div class="w-full h-4 bg-cream-warm rounded-full overflow-hidden p-0.5 border border-cream-border">
+                                <div class="h-full bg-gradient-to-l from-sage to-honey rounded-full transition-all duration-700" style="width: ${todayScore}%"></div>
+                            </div>
+                            <div class="mt-2.5 flex items-center justify-between text-xs text-ink-muted font-bold">
+                                <span>${todayRecord ? `تم تسجيل اليوم (${todayPerformedPrayers}/5 صلوات في وقتها/حاضراً • ${todayRecord.quranLines || 0} سطر قرآن)` : 'لم تبدئي تسجيل اليوم بعد، هيا بنا! 🌸'}</span>
+                                ${streaks.currentStreak > 0 ? `<span class="text-honey-dark font-extrabold">🔥 سلسلة ${streaks.currentStreak} يوم</span>` : ''}
+                            </div>
+                        </div>
+
+                        <!-- زر البدء الكبير والواضح -->
+                        <div class="mt-5">
+                            <button onclick="App.navigate('record', { date: '${todayStr}' })"
+                                class="w-full py-4 px-6 rounded-2xl bg-gradient-to-l from-honey to-[#F6D375] hover:brightness-105 text-ink font-extrabold text-lg sm:text-xl shadow-honey border-b-4 border-honey-dark flex items-center justify-center gap-3 transition-all active:translate-y-0.5">
+                                <span class="text-2xl">🐝</span>
+                                <span>${todayRecord ? 'تعديل أو إكمال إنجازات اليوم' : 'ابدئي تسجيل إنجازات اليوم'}</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- بطاقتان: ملخص الأسبوع الحالي + آخر تسجيل محفوظ -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- ملخص الأسبوع الحالي -->
+                        <section class="bee-card p-5 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                                        <span>🌟</span>
+                                        <span>ملخص الأسبوع الحالي</span>
+                                    </h3>
+                                    <span class="text-xs font-bold bg-sage-soft text-sage-dark px-2.5 py-1 rounded-full">السبت - الجمعة</span>
+                                </div>
+
+                                <div class="grid grid-cols-3 gap-2 text-center my-3">
+                                    <div class="bg-cream p-3 rounded-2xl border border-cream-border">
+                                        <p class="text-xl font-extrabold text-sage-dark">${weeklyRep.recordedDaysCount}<span class="text-xs text-ink-muted">/7</span></p>
+                                        <p class="text-xs font-bold text-ink-muted mt-0.5">أيام مسجلة</p>
+                                    </div>
+                                    <div class="bg-cream p-3 rounded-2xl border border-cream-border">
+                                        <p class="text-xl font-extrabold text-ink">${weeklyRep.totalOnTimeCount + weeklyRep.totalPresentCount}</p>
+                                        <p class="text-xs font-bold text-ink-muted mt-0.5">صلاة مؤداة</p>
+                                    </div>
+                                    <div class="bg-cream p-3 rounded-2xl border border-cream-border">
+                                        <p class="text-xl font-extrabold text-honey-dark">${weeklyRep.totalQuranLines}</p>
+                                        <p class="text-xs font-bold text-ink-muted mt-0.5">سطر قرآن</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="App.navigate('weekly')"
+                                class="mt-2 w-full py-2.5 px-4 rounded-xl bg-sage-soft hover:bg-sage text-sage-dark hover:text-white font-extrabold text-sm transition-colors flex items-center justify-center gap-2">
+                                <span>عرض تقرير حصاد الأسبوع كاملاً</span>
+                                <span>⬅️</span>
+                            </button>
+                        </section>
+
+                        <!-- آخر تسجيل محفوظ -->
+                        <section class="bee-card p-5 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                                        <span>📔</span>
+                                        <span>آخر تسجيل محفوظ</span>
+                                    </h3>
+                                    ${latestDate ? `<span class="text-xs font-bold bg-honey-soft text-honey-dark px-2.5 py-1 rounded-full">${latestDate}</span>` : ''}
+                                </div>
+
+                                ${latestRecord ? `
+                                    <div class="space-y-2.5 text-sm">
+                                        <p class="font-bold text-ink-muted">يوم <strong class="text-ink">${ReportsModule.getArabicDayName(latestDate)}</strong>:</p>
+                                        <div class="flex flex-wrap gap-1.5">
+                                            ${ReportsModule.PRAYER_META.map(p => {
+                                                const st = latestRecord.prayers?.[p.key];
+                                                const badgeColor = st === 'ontime' ? 'bg-sage-soft text-sage-dark border-sage/40' :
+                                                                   st === 'present' ? 'bg-[#E9EFE5] text-[#536B4E] border-[#B8C9B2]' :
+                                                                   (st === 'qada' || st === 'late') ? 'bg-honey-soft text-honey-dark border-honey/50' :
+                                                                   'bg-cream-warm text-ink-muted border-cream-border';
+                                                const mark = st === 'ontime' ? '🌟' : st === 'present' ? '✅' : (st === 'qada' || st === 'late') ? '⏰' : '⚪';
+                                                return `<span class="px-2.5 py-1 rounded-xl border text-xs font-bold ${badgeColor}">${p.label} ${mark}</span>`;
+                                            }).join('')}
+                                        </div>
+                                        <div class="bg-cream p-2.5 rounded-xl border border-cream-border flex items-center justify-between text-xs font-bold">
+                                            <span>📖 ورد القرآن: <strong class="text-sage-dark">${latestRecord.quranLines || 0} سطراً</strong></span>
+                                            <span>${latestRecord.parents ? latestRecord.parents === 'excellent' ? '🌸 بارة بوالديها' : '🤍 بر الوالدين' : ''}</span>
+                                        </div>
+                                    </div>
+                                ` : `
+                                    <div class="bg-cream rounded-2xl p-5 text-center text-ink-muted space-y-1 my-2">
+                                        <p class="text-2xl">🌱</p>
+                                        <p class="text-sm font-bold">لا توجد تسجيلات سابقة بعد</p>
+                                        <p class="text-xs">ابدئي اليوم أول صفحة في مفكرتكِ!</p>
+                                    </div>
+                                `}
+                            </div>
+
+                            ${latestRecord ? `
+                                <div class="mt-3 flex gap-2">
+                                    <button onclick="App.navigate('record', { date: '${latestDate}' })"
+                                        class="flex-1 py-2.5 px-3 rounded-xl bg-cream-warm hover:bg-cream-border text-ink font-extrabold text-xs transition-colors">
+                                        تعديل السجل ✏️
+                                    </button>
+                                    <a href="${ReportsModule.buildDailyWhatsAppMessage(latestRecord)}" target="_blank" rel="noopener noreferrer"
+                                        class="flex-1 py-2.5 px-3 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#1B8A44] font-extrabold text-xs text-center transition-colors">
+                                        إرسال للمعلمة 🐝
+                                    </a>
+                                </div>
+                            ` : ''}
+                        </section>
+                    </div>
+                `;
+            }
+
+            /* =====================================================================
+               2. نموذج تسجيل الإنجازات اليومية (Daily Record Form View)
+               ===================================================================== */
+            function onFormDateChange(newDate) {
+                if (!newDate) return;
+                state.formDate = newDate;
+                state.justSavedDate = null;
+                loadDraftForDate(newDate);
+                render();
+            }
+
+            function setPrayerChoice(prayerKey, status) {
+                state.draftRecord.prayers[prayerKey] = status;
+                render();
+            }
+
+            function setParentsChoice(val) {
+                state.draftRecord.parents = val;
+                render();
+            }
+
+            function setQuranLines(val) {
+                const num = Math.max(0, Math.min(100, parseInt(val, 10) || 0));
+                state.draftRecord.quranLines = num;
+                render();
+            }
+
+            function toggleExtraDeed(label) {
+                const list = state.draftRecord.extraDeeds || [];
+                const idx = list.indexOf(label);
+                if (idx >= 0) list.splice(idx, 1);
+                else list.push(label);
+                state.draftRecord.extraDeeds = list;
+                render();
+            }
+
+            function updateCustomDeed(val) {
+                state.draftRecord.customDeed = val;
+            }
+
+            function getQuranEncouragement(lines) {
+                if (lines === 0) return 'اختاري عدد الأسطر التي حفظت اليوم ولو سطراً واحداً 📖';
+                if (lines < 5) return `بداية جميلة! حفظت ${lines} ${lines === 1 ? 'سطر' : 'أسطر'} اليوم، زادكِ الله نوراً 🌱`;
+                if (lines < 15) return `ما شاء الله! حفظت ${lines} سطراً اليوم، بارك الله فيكِ 🌟`;
+                if (lines < 30) return `رائعة يا نحلتنا! ${lines} سطراً من كتاب الله، هنيئاً لقلبكِ 🍯`;
+                return `تبارك الله! إنجاز عظيم بحفظ ${lines} سطراً اليوم، جعلكِ الله من أهل القرآن 👑`;
+            }
+
+            function handleSaveRecord() {
+                const dateStr = state.formDate;
+                const saved = StorageModule.saveRecord(dateStr, state.draftRecord);
+                if (saved) {
+                    state.justSavedDate = dateStr;
+                    showToast('تم حفظ إنجازاتك يا نحلتنا! 🐝', '🍯');
+                    render();
+                    setTimeout(() => {
+                        const successBox = document.getElementById('save-success-box');
+                        if (successBox) successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
+            }
+
+            function renderRecordView() {
+                const todayStr = StorageModule.toLocalDateStr(new Date());
+                const draft = state.draftRecord;
+                const isSavedToday = state.justSavedDate === state.formDate || Boolean(StorageModule.getRecord(state.formDate));
+                const savedRecordForWhatsApp = StorageModule.getRecord(state.formDate);
+
+                return `
+                    <!-- رأس الصفحة واختيار التاريخ -->
+                    <section class="bee-card p-5 bg-gradient-to-l from-sage-soft/70 to-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-ink flex items-center gap-2">
+                                <span>🐝</span>
+                                <span>تسجيل إنجازات اليوم</span>
+                            </h2>
+                            <p class="text-xs sm:text-sm text-sage-dark font-bold mt-1">
+                                ${ReportsModule.formatArabicFullDate(state.formDate)}
+                            </p>
+                        </div>
+
+                        <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-2xl border border-cream-border self-start sm:self-auto">
+                            <label for="record-date-picker" class="text-xs font-extrabold text-ink-muted">التاريخ:</label>
+                            <input type="date" id="record-date-picker" value="${state.formDate}" max="${todayStr}"
+                                onchange="App.onFormDateChange(this.value)"
+                                class="text-xs sm:text-sm font-extrabold text-ink bg-transparent focus:outline-none">
+                        </div>
+                    </section>
+
+                    <!-- أولاً: الصلوات الخمس (4 اختيارات لكل صلاة) -->
+                    <section class="space-y-3">
+                        <div class="flex items-center justify-between px-1">
+                            <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                                <span>🕌</span>
+                                <span>أولاً: الصلوات الخمس</span>
+                            </h3>
+                            <span class="text-xs text-ink-muted font-bold">اختاري حالة كل صلاة</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-3">
+                            ${ReportsModule.PRAYER_META.map(prayer => {
+                                const currentVal = draft.prayers?.[prayer.key];
+                                return `
+                                    <div class="bee-card p-4 sm:p-5">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <div class="flex items-center gap-2.5">
+                                                <span class="text-2xl">${prayer.icon}</span>
+                                                <span class="text-base sm:text-lg font-extrabold text-ink">صلاة ${prayer.label}</span>
+                                            </div>
+                                            ${currentVal ? `<span class="text-xs font-extrabold text-sage-dark bg-sage-soft px-2.5 py-0.5 rounded-full">تم الاختيار ✓</span>` : ''}
+                                        </div>
+
+                                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                            <!-- 1. في وقتها -->
+                                            <button type="button" onclick="App.setPrayerChoice('${prayer.key}', 'ontime')"
+                                                class="choice-btn py-3 px-3 rounded-2xl border-2 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-1.5
+                                                ${currentVal === 'ontime'
+                                                    ? 'bg-sage text-white border-sage-dark shadow-sm'
+                                                    : 'bg-cream hover:bg-sage-soft/60 text-ink border-cream-border'}">
+                                                <span>🌟</span>
+                                                <span>في وقتها</span>
+                                            </button>
+
+                                            <!-- 2. حاضر -->
+                                            <button type="button" onclick="App.setPrayerChoice('${prayer.key}', 'present')"
+                                                class="choice-btn py-3 px-3 rounded-2xl border-2 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-1.5
+                                                ${currentVal === 'present'
+                                                    ? 'bg-[#7A9A78] text-white border-[#587456] shadow-sm'
+                                                    : 'bg-cream hover:bg-[#EEF3EC] text-ink border-cream-border'}">
+                                                <span>✅</span>
+                                                <span>حاضر</span>
+                                            </button>
+
+                                            <!-- 3. قضاء -->
+                                            <button type="button" onclick="App.setPrayerChoice('${prayer.key}', 'qada')"
+                                                class="choice-btn py-3 px-3 rounded-2xl border-2 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-1.5
+                                                ${(currentVal === 'qada' || currentVal === 'late')
+                                                    ? 'bg-honey text-ink border-honey-dark shadow-sm'
+                                                    : 'bg-cream hover:bg-honey-soft text-ink border-cream-border'}">
+                                                <span>⏰</span>
+                                                <span>قضاء</span>
+                                            </button>
+
+                                            <!-- 4. لم أصلّها -->
+                                            <button type="button" onclick="App.setPrayerChoice('${prayer.key}', 'missed')"
+                                                class="choice-btn py-3 px-3 rounded-2xl border-2 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-1.5
+                                                ${currentVal === 'missed'
+                                                    ? 'bg-[#E8E4DC] text-ink border-[#B8B2A6]'
+                                                    : 'bg-cream hover:bg-cream-warm text-ink-muted border-cream-border'}">
+                                                <span>⚪</span>
+                                                <span>لم أصلِّها</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </section>
+
+                    <!-- ثانياً: رضا الوالدين -->
+                    <section class="bee-card p-5 space-y-3.5">
+                        <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                            <span>🤍</span>
+                            <span>ثانياً: كيف كان برّكِ بوالديكِ اليوم؟</span>
+                        </h3>
+
+                        <div class="grid grid-cols-1 gap-2.5">
+                            ${Object.entries(ReportsModule.PARENTS_LABELS).map(([key, label]) => {
+                                const isSelected = draft.parents === key;
+                                return `
+                                    <button type="button" onclick="App.setParentsChoice('${key}')"
+                                        class="choice-btn w-full text-right py-3.5 px-4 rounded-2xl border-2 text-sm sm:text-base font-extrabold flex items-center justify-between
+                                        ${isSelected
+                                            ? 'bg-honey-soft border-honey-dark text-ink shadow-xs'
+                                            : 'bg-cream hover:bg-cream-warm border-cream-border text-ink'}">
+                                        <span>${label}</span>
+                                        <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs ${isSelected ? 'bg-honey text-ink' : 'bg-white border border-cream-border'}">
+                                            ${isSelected ? '✓' : ''}
+                                        </span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    </section>
+
+                    <!-- ثالثاً: ورد القرآن الكريم -->
+                    <section class="bee-card p-5 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                                <span>📖</span>
+                                <span>ثالثاً: كم حفظت من القرآن اليوم؟</span>
+                            </h3>
+                            <span class="text-xs font-extrabold bg-sage-soft text-sage-dark px-3 py-1 rounded-full">عدد الأسطر</span>
+                        </div>
+
+                        <!-- أزرار سريعة -->
+                        <div class="grid grid-cols-6 gap-2">
+                            ${[0, 5, 10, 15, 20, 30].map(num => {
+                                const active = draft.quranLines === num;
+                                return `
+                                    <button type="button" onclick="App.setQuranLines(${num})"
+                                        class="choice-btn py-2.5 rounded-xl border-2 text-sm sm:text-base font-extrabold
+                                        ${active
+                                            ? 'bg-sage text-white border-sage-dark shadow-xs'
+                                            : 'bg-cream hover:bg-sage-soft text-ink border-cream-border'}">
+                                        ${num}
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <!-- شريط تمرير + إدخال يدوي -->
+                        <div class="flex items-center gap-3 bg-cream p-3.5 rounded-2xl border border-cream-border">
+                            <button type="button" onclick="App.setQuranLines(${Math.max(0, draft.quranLines - 1)})"
+                                class="w-11 h-11 rounded-xl bg-white border border-cream-border text-xl font-extrabold text-ink active:scale-95">−</button>
+                            
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="flex items-baseline gap-1.5">
+                                    <input type="number" min="0" max="100" value="${draft.quranLines}"
+                                        onchange="App.setQuranLines(this.value)"
+                                        class="w-20 text-center text-2xl font-extrabold text-sage-dark bg-white border-2 border-sage-light rounded-xl py-1 focus:outline-none focus:border-sage-dark">
+                                    <span class="text-sm font-bold text-ink-muted">سطراً</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="${draft.quranLines}"
+                                    oninput="App.setQuranLines(this.value)"
+                                    class="w-full mt-2.5 accent-[#8FA893] cursor-pointer">
+                            </div>
+
+                            <button type="button" onclick="App.setQuranLines(${Math.min(100, draft.quranLines + 1)})"
+                                class="w-11 h-11 rounded-xl bg-white border border-cream-border text-xl font-extrabold text-ink active:scale-95">+</button>
+                        </div>
+
+                        <!-- عبارة تشجيعية حسب الإنجاز -->
+                        <div class="bg-honey-soft/80 border border-honey/60 rounded-2xl p-3.5 text-center">
+                            <p class="text-sm font-extrabold text-ink">${getQuranEncouragement(draft.quranLines)}</p>
+                        </div>
+                    </section>
+
+                    <!-- رابعاً: إنجاز إضافي (اختياري) -->
+                    <section class="bee-card p-5 space-y-3.5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-extrabold text-ink flex items-center gap-2">
+                                <span>🌱</span>
+                                <span>رابعاً: هل قمتِ بعمل صالح آخر اليوم؟</span>
+                            </h3>
+                            <span class="text-xs font-bold text-ink-muted bg-cream-warm px-2.5 py-1 rounded-full">اختياري</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            ${EXTRA_DEEDS_OPTIONS.map(item => {
+                                const checked = draft.extraDeeds.includes(item.label);
+                                return `
+                                    <button type="button" onclick="App.toggleExtraDeed('${item.label}')"
+                                        class="choice-btn py-3 px-4 rounded-2xl border-2 text-right text-sm font-extrabold flex items-center justify-between
+                                        ${checked
+                                            ? 'bg-sage-soft border-sage text-ink'
+                                            : 'bg-cream hover:bg-cream-warm border-cream-border text-ink-muted'}">
+                                        <span class="flex items-center gap-2">
+                                            <span>${item.icon}</span>
+                                            <span>${item.label}</span>
+                                        </span>
+                                        <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs ${checked ? 'bg-sage text-white' : 'bg-white border border-cream-border'}">
+                                            ${checked ? '✓' : ''}
+                                        </span>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <div class="pt-1">
+                            <input type="text" value="${escapeHtml(draft.customDeed)}"
+                                oninput="App.updateCustomDeed(this.value)"
+                                placeholder="✨ عمل صالح آخر قمتِ به (اختياري)..."
+                                class="w-full px-4 py-3 rounded-2xl bg-cream border border-cream-border focus:border-sage focus:outline-none text-sm font-bold text-ink">
+                        </div>
+                    </section>
+
+                    <!-- زر الحفظ الكبير -->
+                    <div class="pt-2 space-y-4">
+                        <button type="button" onclick="App.handleSaveRecord()"
+                            class="w-full py-4 px-6 rounded-2xl bg-gradient-to-l from-sage-dark to-sage hover:brightness-105 text-white font-extrabold text-lg sm:text-xl shadow-soft border-b-4 border-[#536856] flex items-center justify-center gap-2.5 transition-all active:translate-y-0.5">
+                            <span>💾</span>
+                            <span>حفظ إنجازات اليوم</span>
+                        </button>
+
+                        <!-- رسالة النجاح وزر الإرسال عبر واتساب -->
+                        ${isSavedToday && savedRecordForWhatsApp ? `
+                            <div id="save-success-box" class="bee-card p-6 bg-gradient-to-b from-honey-soft to-white border-2 border-honey text-center space-y-4 view-enter">
+                                <div class="text-4xl animate-bee">🐝🎉</div>
+                                <h4 class="text-xl font-extrabold text-ink">تم حفظ إنجازاتك يا نحلتنا! 🐝</h4>
+                                <p class="text-sm text-ink-muted font-bold">بارك الله في همتكِ، يمكنكِ الآن مشاركة تقريركِ الجميل مع معلمتكِ:</p>
+                                <a href="${ReportsModule.buildDailyWhatsAppMessage(savedRecordForWhatsApp)}"
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-4 rounded-2xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-extrabold text-base sm:text-lg shadow-md transition-transform active:scale-95">
+                                    <span>🐝</span>
+                                    <span>أرسلي إنجازاتك للمعلمة</span>
+                                </a>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            /* =====================================================================
+               3. التقويم وسجل الإنجازات «رحلتي مع الطاعات» (Calendar View)
+               ===================================================================== */
+            function changeCalendarMonth(delta) {
+                let m = state.calendarMonth + delta;
+                let y = state.calendarYear;
+                if (m < 0) {
+                    m = 11;
+                    y--;
+                } else if (m > 11) {
+                    m = 0;
+                    y++;
+                }
+                state.calendarMonth = m;
+                state.calendarYear = y;
+                render();
+            }
+
+            function selectCalendarDay(dateStr) {
+                state.selectedCalendarDate = dateStr;
+                render();
+            }
+
+            function renderCalendarView() {
+                const year = state.calendarYear;
+                const month = state.calendarMonth;
+                const monthName = ReportsModule.ARABIC_MONTHS[month];
+                const allRecords = StorageModule.getAllRecords();
+                const streaks = ReportsModule.calculateStreaks();
+                const todayStr = StorageModule.toLocalDateStr(new Date());
+
+                // حساب أيام الشهر مع بداية الأسبوع يوم السبت (6)
+                const firstDayOfMonth = new Date(year, month, 1, 12, 0, 0);
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const startDayOfWeek = firstDayOfMonth.getDay(); // 0=الأحد .. 6=السبت
+                const leadingEmptyCells = (startDayOfWeek === 6) ? 0 : (startDayOfWeek + 1);
+
+                // إحصاءات الشهر المعروض حالياً (للأيام المسجلة فقط)
+                const monthPrefix = `${year}-${String(month + 1).padStart(2, '0')}`;
+                let monthRecordedDays = 0;
+                let monthQuranSum = 0;
+                let monthOnTimePrayers = 0;
+                let monthParentsGood = 0;
+
+                Object.keys(allRecords).forEach(k => {
+                    if (k.startsWith(monthPrefix)) {
+                        const r = allRecords[k];
+                        monthRecordedDays++;
+                        monthQuranSum += (r.quranLines || 0);
+                        ReportsModule.PRAYER_META.forEach(p => {
+                            if (r.prayers?.[p.key] === 'ontime') monthOnTimePrayers++;
+                        });
+                        if (r.parents === 'excellent') monthParentsGood++;
+                    }
+                });
+
+                const selectedRec = allRecords[state.selectedCalendarDate] || null;
+                const weekHeaders = ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+
+                let cellsHtml = '';
+                for (let i = 0; i < leadingEmptyCells; i++) {
+                    cellsHtml += `<div class="aspect-square rounded-2xl bg-cream/40"></div>`;
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                    const hasRecord = Boolean(allRecords[dateStr]);
+                    const isSelected = state.selectedCalendarDate === dateStr;
+                    const isToday = dateStr === todayStr;
+
+                    cellsHtml += `
+                        <button type="button" onclick="App.selectCalendarDay('${dateStr}')"
+                            class="aspect-square rounded-2xl border-2 flex flex-col items-center justify-center relative transition-all active:scale-95
+                            ${isSelected ? 'border-sage-dark ring-2 ring-sage/30 scale-[1.03]' : ''}
+                            ${hasRecord ? 'bg-honey-soft border-honey text-ink font-extrabold' : 'bg-cream border-cream-border text-ink-muted font-bold hover:bg-cream-warm'}">
+                            <span class="text-xs sm:text-sm ${isToday ? 'underline decoration-sage-dark decoration-2' : ''}">${day}</span>
+                            <span class="text-sm sm:text-base leading-none mt-0.5">${hasRecord ? '🐝' : '·'}</span>
+                        </button>
+                    `;
+                }
+
+                return `
+                    <!-- العنوان وسلسلة الاستمرار -->
+                    <section class="bee-card p-5 bg-gradient-to-l from-honey-soft/70 to-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-extrabold text-ink flex items-center gap-2">
+                                <span>🗓️</span>
+                                <span>رحلتي مع الطاعات</span>
+                            </h2>
+                            <p class="text-xs sm:text-sm text-ink-muted font-bold mt-1">اضغطي على أي يوم لمراجعة إنجازاتكِ أو تعديلها</p>
+                        </div>
+                        <div class="inline-flex items-center gap-2 bg-white border border-honey px-4 py-2 rounded-2xl shadow-2xs self-start">
+                            <span class="text-xl">🔥</span>
+                            <div>
+                                <p class="text-xs font-bold text-ink-muted">أيام التسجيل المتتالية</p>
+                                <p class="text-base font-extrabold text-ink">${streaks.currentStreak} يوم</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- بطاقة التقويم الشهري -->
+                    <section class="bee-card p-4 sm:p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <button type="button" onclick="App.changeCalendarMonth(-1)"
+                                class="w-10 h-10 rounded-xl bg-cream-warm hover:bg-sage-soft text-ink font-extrabold flex items-center justify-center">❮</button>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-ink">${monthName} ${year}</h3>
+                            <button type="button" onclick="App.changeCalendarMonth(1)"
+                                class="w-10 h-10 rounded-xl bg-cream-warm hover:bg-sage-soft text-ink font-extrabold flex items-center justify-center">❯</button>
+                        </div>
+
+                        <!-- أسماء الأيام -->
+                        <div class="grid grid-cols-7 gap-1.5 mb-2 text-center">
+                            ${weekHeaders.map(h => `<div class="text-[11px] sm:text-xs font-extrabold text-sage-dark py-1">${h.slice(0, 3)}</div>`).join('')}
+                        </div>
+
+                        <!-- شبكة الأيام -->
+                        <div class="grid grid-cols-7 gap-1.5">
+                            ${cellsHtml}
+                        </div>
+
+                        <!-- ملخص الشهر المصغر -->
+                        <div class="grid grid-cols-3 gap-2 mt-5 pt-4 border-t border-cream-border text-center">
+                            <div class="bg-cream rounded-xl p-2.5">
+                                <p class="text-base font-extrabold text-sage-dark">${monthRecordedDays}</p>
+                                <p class="text-[11px] font-bold text-ink-muted">أيام مسجلة</p>
+                            </div>
+                            <div class="bg-cream rounded-xl p-2.5">
+                                <p class="text-base font-extrabold text-ink">${monthOnTimePrayers}</p>
+                                <p class="text-[11px] font-bold text-ink-muted">صلاة في وقتها</p>
+                            </div>
+                            <div class="bg-cream rounded-xl p-2.5">
+                                <p class="text-base font-extrabold text-honey-dark">${monthQuranSum}</p>
+                                <p class="text-[11px] font-bold text-ink-muted">سطر قرآن</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- بطاقة تفاصيل اليوم المختار -->
+                    <section class="bee-card p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-base sm:text-lg font-extrabold text-ink">
+                                📌 تفاصيل يوم ${ReportsModule.formatArabicFullDate(state.selectedCalendarDate)}
+                            </h3>
+                            <button type="button" onclick="App.navigate('record', { date: '${state.selectedCalendarDate}' })"
+                                class="px-3.5 py-1.5 rounded-xl bg-sage text-white text-xs font-extrabold hover:bg-sage-dark transition-colors">
+                                ${selectedRec ? 'تعديل اليوم ✏️' : 'تسجيل هذا اليوم 🐝'}
+                            </button>
+                        </div>
+
+                        ${selectedRec ? `
+                            <div class="space-y-3 text-sm">
+                                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                                    ${ReportsModule.PRAYER_META.map(p => {
+                                        const st = selectedRec.prayers?.[p.key];
+                                        const lbl = ReportsModule.PRAYER_STATUS_LABELS[st] || 'غير محدد';
+                                        const bg = st === 'ontime' ? 'bg-sage-soft text-sage-dark' :
+                                                   st === 'present' ? 'bg-[#E9EFE5] text-[#536B4E]' :
+                                                   (st === 'qada' || st === 'late') ? 'bg-honey-soft text-honey-dark' :
+                                                   'bg-cream-warm text-ink-muted';
+                                        return `
+                                            <div class="p-2.5 rounded-xl ${bg} text-center">
+                                                <p class="font-extrabold text-xs">${p.icon} ${p.label}</p>
+                                                <p class="text-[11px] font-bold mt-0.5">${lbl}</p>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+
+                                <div class="bg-cream p-3 rounded-2xl border border-cream-border space-y-1.5 text-xs font-bold">
+                                    <p>🤍 رضا الوالدين: <strong class="text-ink">${ReportsModule.PARENTS_LABELS[selectedRec.parents] || 'لم يُحدد'}</strong></p>
+                                    <p>📖 ورد القرآن: <strong class="text-sage-dark">${selectedRec.quranLines || 0} سطراً</strong></p>
+                                    ${(selectedRec.extraDeeds?.length || selectedRec.customDeed) ? `
+                                        <p>🌱 أعمال إضافية: <strong class="text-ink">${[...(selectedRec.extraDeeds || []), selectedRec.customDeed].filter(Boolean).join('، ')}</strong></p>
+                                    ` : ''}
+                                </div>
+
+                                <a href="${ReportsModule.buildDailyWhatsAppMessage(selectedRec)}" target="_blank" rel="noopener noreferrer"
+                                    class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#25D366] text-white font-extrabold text-sm">
+                                    <span>🐝</span>
+                                    <span>إرسال تقرير هذا اليوم للمعلمة</span>
+                                </a>
+                            </div>
+                        ` : `
+                            <div class="bg-cream rounded-2xl p-5 text-center text-ink-muted">
+                                <p class="text-sm font-bold">لم يتم تسجيل إنجازات لهذا اليوم بعد.</p>
+                            </div>
+                        `}
+                    </section>
+                `;
+            }
+
+            /* =====================================================================
+               4. التقرير الأسبوعي «🌟 حصاد الأسبوع» (Weekly Report View)
+               ===================================================================== */
+            function shiftWeeklyReport(daysDelta) {
+                const d = StorageModule.parseLocalDate(state.weeklyRefDate);
+                d.setDate(d.getDate() + daysDelta);
+                state.weeklyRefDate = StorageModule.toLocalDateStr(d);
+                render();
+            }
+
+            function renderWeeklyView() {
+                const rep = ReportsModule.generateWeeklyReport(state.weeklyRefDate);
+                const whatsappUrl = ReportsModule.buildWeeklyWhatsAppMessage(rep);
+
+                const shortStatusBadge = (st) => {
+                    if (st === 'ontime') return '<span class="inline-block px-2 py-0.5 rounded-md bg-sage-soft text-sage-dark font-extrabold text-[11px]">في وقتها 🌟</span>';
+                    if (st === 'present') return '<span class="inline-block px-2 py-0.5 rounded-md bg-[#E9EFE5] text-[#536B4E] font-extrabold text-[11px]">حاضر ✅</span>';
+                    if (st === 'qada' || st === 'late') return '<span class="inline-block px-2 py-0.5 rounded-md bg-honey-soft text-honey-dark font-extrabold text-[11px]">قضاء ⏰</span>';
+                    if (st === 'missed') return '<span class="inline-block px-2 py-0.5 rounded-md bg-cream-warm text-ink-muted font-bold text-[11px]">لم أصلِّها</span>';
+                    return '<span class="text-ink-muted text-xs">—</span>';
+                };
+
+                return `
+                    <!-- رأس التقرير والتنقل بين الأسابيع -->
+                    <section class="bee-card p-5 bg-gradient-to-l from-honey-soft to-white space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div>
+                                <h2 class="text-xl sm:text-2xl font-extrabold text-ink flex items-center gap-2">
+                                    <span>🌟</span>
+                                    <span>حصاد الأسبوع</span>
+                                </h2>
+                                <p class="text-xs sm:text-sm font-bold text-ink-muted mt-1">
+                                    من السبت <strong>${rep.startDate}</strong> إلى الجمعة <strong>${rep.endDate}</strong>
+                                </p>
+                            </div>
+
+                            <div class="flex items-center gap-2 self-start">
+                                <button type="button" onclick="App.shiftWeeklyReport(-7)"
+                                    class="px-3 py-2 rounded-xl bg-white border border-cream-border hover:bg-cream-warm text-xs font-extrabold text-ink">
+                                    ❮ السابق
+                                </button>
+                                <button type="button" onclick="App.shiftWeeklyReport(7)"
+                                    class="px-3 py-2 rounded-xl bg-white border border-cream-border hover:bg-cream-warm text-xs font-extrabold text-ink">
+                                    التالي ❯
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- زر إرسال التقرير الأسبوعي عبر واتساب -->
+                        <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer"
+                            class="w-full py-3.5 px-5 rounded-2xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-extrabold text-base shadow-sm flex items-center justify-center gap-2.5 transition-transform active:scale-[0.99]">
+                            <span>📩</span>
+                            <span>أرسلي حصاد أسبوعك للمعلمة</span>
+                        </a>
+                    </section>
+
+                    <!-- بطاقات الملخص الثلاث -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- ملخص الصلوات -->
+                        <section class="bee-card p-4 space-y-2.5">
+                            <h3 class="text-base font-extrabold text-ink flex items-center gap-1.5 border-b border-cream-border pb-2">
+                                <span>🕌</span>
+                                <span>ملخص الصلوات</span>
+                            </h3>
+                            <div class="space-y-1.5 text-xs font-bold">
+                                ${ReportsModule.PRAYER_META.map(p => `
+                                    <div class="flex justify-between items-center bg-cream px-3 py-1.5 rounded-xl">
+                                        <span>${p.icon} ${p.label} (في وقتها)</span>
+                                        <span class="font-extrabold text-sage-dark">${rep.prayersOnTime[p.key]} / 7</span>
+                                    </div>
+                                `).join('')}
+                                <div class="pt-1.5 grid grid-cols-3 gap-1 text-center text-[11px] text-ink-muted">
+                                    <div class="bg-[#E9EFE5] text-[#536B4E] py-1 px-1.5 rounded-lg">✅ حاضر: <strong>${rep.totalPresentCount}</strong></div>
+                                    <div class="bg-honey-soft text-honey-dark py-1 px-1.5 rounded-lg">⏰ قضاء: <strong>${rep.totalQadaCount}</strong></div>
+                                    <div class="bg-cream-warm text-ink py-1 px-1.5 rounded-lg">⚪ لم أصلِّها: <strong>${rep.totalMissedCount}</strong></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ملخص القرآن الكريم -->
+                        <section class="bee-card p-4 space-y-2.5 flex flex-col justify-between">
+                            <div class="space-y-2.5">
+                                <h3 class="text-base font-extrabold text-ink flex items-center gap-1.5 border-b border-cream-border pb-2">
+                                    <span>📖</span>
+                                    <span>ملخص القرآن الكريم</span>
+                                </h3>
+                                <div class="bg-sage-soft/60 p-3.5 rounded-2xl text-center">
+                                    <p class="text-2xl font-extrabold text-sage-dark">${rep.totalQuranLines}</p>
+                                    <p class="text-xs font-bold text-ink">إجمالي الأسطر المقروءة</p>
+                                </div>
+                                <div class="bg-cream p-3 rounded-xl flex justify-between items-center text-xs font-bold">
+                                    <span class="text-ink-muted">المتوسط في الأيام المسجلة:</span>
+                                    <span class="font-extrabold text-ink">${rep.avgQuranLines} سطر/يوم</span>
+                                </div>
+                            </div>
+                            <div class="bg-honey-soft/70 p-3 rounded-xl text-xs font-bold text-ink">
+                                🏆 أكثر يوم حفظ: 
+                                <strong>${rep.bestQuranDay ? `${rep.bestQuranDay.dayName} (${rep.bestQuranDay.lines} سطراً)` : 'لا يوجد بعد'}</strong>
+                            </div>
+                        </section>
+
+                        <!-- ملخص رضا الوالدين -->
+                        <section class="bee-card p-4 space-y-2.5">
+                            <h3 class="text-base font-extrabold text-ink flex items-center gap-1.5 border-b border-cream-border pb-2">
+                                <span>🤍</span>
+                                <span>ملخص رضا الوالدين</span>
+                            </h3>
+                            <div class="space-y-2 text-xs font-bold">
+                                <div class="bg-cream p-3 rounded-xl flex items-center justify-between">
+                                    <span>🌸 بارة بهما وأحسنت</span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-sage text-white font-extrabold">${rep.parentsCounts.excellent} أيام</span>
+                                </div>
+                                <div class="bg-cream p-3 rounded-xl flex items-center justify-between">
+                                    <span>💛 حاولت واجتهدت</span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-honey text-ink font-extrabold">${rep.parentsCounts.tried} أيام</span>
+                                </div>
+                                <div class="bg-cream p-3 rounded-xl flex items-center justify-between">
+                                    <span>🌱 أحتاج أن أحسن أكثر</span>
+                                    <span class="px-2.5 py-0.5 rounded-full bg-cream-border text-ink font-extrabold">${rep.parentsCounts.improve} أيام</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- جدول سجل الأيام السبعة (السبت إلى الجمعة) -->
+                    <section class="bee-card p-4 sm:p-5 overflow-hidden">
+                        <h3 class="text-base sm:text-lg font-extrabold text-ink mb-3 flex items-center gap-2">
+                            <span>📋</span>
+                            <span>سجل أيام الأسبوع (السبت - الجمعة)</span>
+                        </h3>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right border-collapse min-w-[640px]">
+                                <thead>
+                                    <tr class="bg-cream-warm text-ink text-xs font-extrabold border-b border-cream-border">
+                                        <th class="py-3 px-3 rounded-tr-xl">اليوم</th>
+                                        <th class="py-3 px-2 text-center">الفجر</th>
+                                        <th class="py-3 px-2 text-center">الظهر</th>
+                                        <th class="py-3 px-2 text-center">العصر</th>
+                                        <th class="py-3 px-2 text-center">المغرب</th>
+                                        <th class="py-3 px-2 text-center">العشاء</th>
+                                        <th class="py-3 px-2 text-center">أسطر القرآن</th>
+                                        <th class="py-3 px-3 rounded-tl-xl">رضا الوالدين</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-cream-border text-xs">
+                                    ${rep.daysRows.map(row => {
+                                        if (!row.isRecorded) {
+                                            return `
+                                                <tr class="bg-cream/50 text-ink-muted">
+                                                    <td class="py-3 px-3 font-extrabold text-ink">
+                                                        ${row.dayName} <span class="text-[10px] font-normal text-ink-muted">(${row.shortDate})</span>
+                                                    </td>
+                                                    <td colspan="7" class="py-3 px-3 text-center font-bold text-ink-muted italic">
+                                                        لم يتم التسجيل
+                                                    </td>
+                                                </tr>
+                                            `;
+                                        }
+                                        const r = row.record;
+                                        const pShort = r.parents === 'excellent' ? '🌸 بارة ومحسنة' :
+                                                       r.parents === 'tried' ? '💛 حاولت واجتهدت' :
+                                                       r.parents === 'improve' ? '🌱 أحتاج تحسيناً' : '—';
+                                        return `
+                                            <tr class="hover:bg-cream/60 transition-colors">
+                                                <td class="py-3 px-3 font-extrabold text-ink">
+                                                    ${row.dayName} <span class="text-[10px] font-normal text-ink-muted">(${row.shortDate})</span>
+                                                </td>
+                                                <td class="py-3 px-2 text-center">${shortStatusBadge(r.prayers?.fajr)}</td>
+                                                <td class="py-3 px-2 text-center">${shortStatusBadge(r.prayers?.dhuhr)}</td>
+                                                <td class="py-3 px-2 text-center">${shortStatusBadge(r.prayers?.asr)}</td>
+                                                <td class="py-3 px-2 text-center">${shortStatusBadge(r.prayers?.maghrib)}</td>
+                                                <td class="py-3 px-2 text-center">${shortStatusBadge(r.prayers?.isha)}</td>
+                                                <td class="py-3 px-2 text-center font-extrabold text-sage-dark">${r.quranLines || 0} سطر</td>
+                                                <td class="py-3 px-3 font-bold text-ink">${pShort}</td>
+                                            </tr>
+                                        `;
+                                    }).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                `;
+            }
+
+            /* =====================================================================
+               5. صفحة الإحصاءات (Statistics View)
+               ===================================================================== */
+            function renderStatsView() {
+                const stats = ReportsModule.calculateGlobalStats();
+
+                return `
+                    <section class="bee-card p-5 bg-gradient-to-l from-sage-soft to-white">
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-ink flex items-center gap-2">
+                            <span>📊</span>
+                            <span>إحصاءاتي وإنجازاتي</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm font-bold text-ink-muted mt-1">
+                            تُحسب جميع النسب بدقة من الأيام التي قمتِ بتسجيلها فعلياً 🐝
+                        </p>
+                    </section>
+
+                    <!-- بطاقات الأرقام الرئيسية -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="bee-card p-4 text-center space-y-1">
+                            <span class="text-2xl">🌟</span>
+                            <p class="text-2xl font-extrabold text-sage-dark">${stats.totalOnTimePrayers}</p>
+                            <p class="text-xs font-bold text-ink-muted">صلاة في وقتها</p>
+                        </div>
+                        <div class="bee-card p-4 text-center space-y-1">
+                            <span class="text-2xl">✅</span>
+                            <p class="text-2xl font-extrabold text-[#587456]">${stats.totalPresentPrayers}</p>
+                            <p class="text-xs font-bold text-ink-muted">صلاة حاضر</p>
+                        </div>
+                        <div class="bee-card p-4 text-center space-y-1">
+                            <span class="text-2xl">📖</span>
+                            <p class="text-2xl font-extrabold text-honey-dark">${stats.monthQuranLines}</p>
+                            <p class="text-xs font-bold text-ink-muted">سطر قرآن هذا الشهر</p>
+                        </div>
+                        <div class="bee-card p-4 text-center space-y-1">
+                            <span class="text-2xl">🏆</span>
+                            <p class="text-2xl font-extrabold text-ink">${stats.longestStreak}</p>
+                            <p class="text-xs font-bold text-ink-muted">أطول سلسلة متتالية</p>
+                        </div>
+                    </div>
+
+                    <!-- نسبة الالتزام بالصلوات في الأيام المسجلة -->
+                    <section class="bee-card p-5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-base sm:text-lg font-extrabold text-ink">نسبة الالتزام بالصلوات (في وقتها / حاضر)</h3>
+                                <p class="text-xs text-ink-muted font-bold">محسوبة من الصلوات المسجلة فقط (إجمالي أيام التسجيل: ${stats.totalRecordedDays} يوم)</p>
+                            </div>
+                            <span class="text-2xl font-extrabold text-sage-dark">${stats.prayerCommitmentPct}%</span>
+                        </div>
+
+                        <div class="w-full h-5 bg-cream-warm rounded-full overflow-hidden p-1 border border-cream-border">
+                            <div class="h-full bg-gradient-to-l from-sage-dark to-sage rounded-full transition-all duration-700"
+                                style="width: ${stats.prayerCommitmentPct}%"></div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3 text-xs font-bold text-ink-muted pt-1">
+                            <span>🌟 في وقتها: <strong class="text-sage-dark">${stats.totalOnTimePrayers}</strong></span>
+                            <span>✅ حاضر: <strong class="text-[#587456]">${stats.totalPresentPrayers}</strong></span>
+                            <span>⏰ قضاء: <strong class="text-honey-dark">${stats.totalQadaPrayers}</strong></span>
+                            <span>⚪ لم أصلِّها: <strong class="text-ink">${stats.totalMissedPrayers}</strong></span>
+                        </div>
+                    </section>
+
+                    <!-- تطور الإنجاز أسبوعاً بعد أسبوع -->
+                    <section class="bee-card p-5 space-y-4">
+                        <h3 class="text-base sm:text-lg font-extrabold text-ink flex items-center gap-2">
+                            <span>📈</span>
+                            <span>تطور الإنجاز أسبوعاً بعد أسبوع</span>
+                        </h3>
+
+                        ${stats.totalRecordedDays === 0 ? `
+                            <div class="bg-cream rounded-2xl p-6 text-center text-ink-muted space-y-1">
+                                <p class="text-3xl">🌱</p>
+                                <p class="text-sm font-bold">لا توجد بيانات مسجلة لعرض الرسم البياني بعد</p>
+                            </div>
+                        ` : `
+                            <div class="space-y-3">
+                                ${stats.weeklyTrend.map(w => `
+                                    <div class="bg-cream p-3.5 rounded-2xl border border-cream-border space-y-2">
+                                        <div class="flex items-center justify-between text-xs font-extrabold">
+                                            <span class="text-ink">${w.label} <span class="text-ink-muted font-normal">(${w.range})</span></span>
+                                            <span class="text-sage-dark">${w.recordedDays} أيام مسجلة • ${w.quranLines} سطر قرآن</span>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <div class="flex-1 h-3.5 bg-white rounded-full overflow-hidden border border-cream-border">
+                                                <div class="h-full bg-honey rounded-full transition-all duration-700" style="width: ${w.avgScore}%"></div>
+                                            </div>
+                                            <span class="text-xs font-extrabold text-ink w-10 text-left">${w.avgScore}%</span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `}
+                    </section>
+                `;
+            }
+
+            /* =====================================================================
+               6. صفحة الإعدادات (Settings View)
+               ===================================================================== */
+            function renderSettingsView() {
+                const studentName = StorageModule.getStudentName();
+                const totalRecords = Object.keys(StorageModule.getAllRecords()).length;
+
+                return `
+                    <section class="bee-card p-5 bg-gradient-to-l from-cream-warm to-white">
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-ink flex items-center gap-2">
+                            <span>⚙️</span>
+                            <span>الإعدادات والنسخ الاحتياطي</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm font-bold text-ink-muted mt-1">تخصيص مفكرتكِ وحفظ نسخة آمنة من إنجازاتكِ</p>
+                    </section>
+
+                    <!-- اسم الطالبة وبداية الأسبوع -->
+                    <section class="bee-card p-5 space-y-4">
+                        <div>
+                            <label class="block text-sm font-extrabold text-ink mb-2">👧 اسم الطالبة (النحلة):</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="settings-name-input" value="${escapeHtml(studentName)}"
+                                    placeholder="اكتبي اسمكِ هنا..."
+                                    class="flex-1 px-4 py-3 rounded-2xl bg-cream border border-cream-border focus:border-sage focus:outline-none text-sm font-bold text-ink">
+                                <button type="button" onclick="App.saveSettingsName()"
+                                    class="px-5 py-3 rounded-2xl bg-sage hover:bg-sage-dark text-white font-extrabold text-sm">
+                                    حفظ
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-cream-border flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-extrabold text-ink">🗓️ يوم بداية الأسبوع</p>
+                                <p class="text-xs text-ink-muted font-bold">معتمد لحساب حصاد الأسبوع</p>
+                            </div>
+                            <span class="px-4 py-2 rounded-xl bg-sage-soft text-sage-dark font-extrabold text-sm">السبت (افتراضي)</span>
+                        </div>
+                    </section>
+
+                    <!-- النسخ الاحتياطي JSON -->
+                    <section class="bee-card p-5 space-y-3">
+                        <h3 class="text-base font-extrabold text-ink">💾 النسخ الاحتياطي والاستعادة</h3>
+                        <p class="text-xs text-ink-muted font-bold leading-relaxed">
+                            جميع بياناتكِ محفوظة تلقائياً في هذا المتصفح (${totalRecords} يوم مسجل). يمكنكِ تصدير نسخة احتياطية للاحتفاظ بها أو نقلها لجهاز آخر:
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <button type="button" onclick="App.handleExportBackup()"
+                                class="py-3.5 px-4 rounded-2xl bg-honey-soft hover:bg-honey-light/70 border border-honey text-ink font-extrabold text-sm flex items-center justify-center gap-2">
+                                <span>📤</span>
+                                <span>تصدير نسخة احتياطية (JSON)</span>
+                            </button>
+
+                            <label class="py-3.5 px-4 rounded-2xl bg-sage-soft hover:bg-sage-light/50 border border-sage-light text-sage-dark font-extrabold text-sm flex items-center justify-center gap-2 cursor-pointer">
+                                <span>📥</span>
+                                <span>استيراد نسخة احتياطية</span>
+                                <input type="file" accept=".json,application/json" onchange="App.handleImportBackup(event)" class="hidden">
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- حذف البيانات -->
+                    <section class="bee-card p-5 border-red-100 space-y-3">
+                        <h3 class="text-base font-extrabold text-red-700">🗑️ مسح جميع البيانات</h3>
+                        <p class="text-xs text-ink-muted font-bold">سيؤدي هذا الإجراء إلى حذف جميع الأيام المسجلة والبدء من جديد.</p>
+                        <button type="button" onclick="App.confirmDeleteAll()"
+                            class="py-3 px-5 rounded-2xl bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 font-extrabold text-sm">
+                            حذف جميع البيانات
+                        </button>
+                    </section>
+                `;
+            }
+
+            function saveSettingsName() {
+                const input = document.getElementById('settings-name-input');
+                if (!input) return;
+                StorageModule.setStudentName(input.value);
+                updateHeaderName();
+                showToast('تم تحديث الاسم بنجاح! 🌸', '👧');
+            }
+
+            function handleExportBackup() {
+                const json = StorageModule.exportJSON();
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                const today = StorageModule.toLocalDateStr(new Date());
+                a.href = url;
+                a.download = `مفكرة-النحلات-${today}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('تم تحميل النسخة الاحتياطية بنجاح!', '📤');
+            }
+
+            function handleImportBackup(event) {
+                const file = event.target.files?.[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const res = StorageModule.importJSON(e.target.result);
+                    if (res.ok) {
+                        updateHeaderName();
+                        showToast(`تم استيراد ${res.count} يوم بنجاح! 🐝`, '📥');
+                        render();
+                    } else {
+                        showModal({
+                            icon: '⚠️',
+                            title: 'تعذر الاستيراد',
+                            body: res.message,
+                            actions: [{
+                                label: 'حسناً',
+                                className: 'bg-sage text-white px-6 py-2.5 rounded-xl font-bold',
+                                onClick: () => closeModal()
+                            }]
+                        });
+                    }
+                };
+                reader.readAsText(file);
+                event.target.value = '';
+            }
+
+            function confirmDeleteAll() {
+                showModal({
+                    icon: '⚠️',
+                    title: 'هل أنتِ متأكدة من حذف جميع البيانات؟',
+                    body: 'سيتم حذف جميع السجلات والأيام المحفوظة نهائياً. يُنصح بتصدير نسخة احتياطية قبل الحذف.',
+                    actions: [
+                        {
+                            label: 'نعم، احذف الجميع',
+                            className: 'bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-2xl font-extrabold w-full sm:w-auto',
+                            onClick: () => {
+                                StorageModule.clearAllData();
+                                updateHeaderName();
+                                closeModal();
+                                showToast('تم مسح البيانات بنجاح', '🗑️');
+                                navigate('home');
+                            }
+                        },
+                        {
+                            label: 'تراجع',
+                            className: 'bg-cream-warm text-ink px-5 py-3 rounded-2xl font-bold w-full sm:w-auto',
+                            onClick: () => closeModal()
+                        }
+                    ]
+                });
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            return {
+                init,
+                navigate,
+                openNameModal,
+                nextQuote,
+                onFormDateChange,
+                setPrayerChoice,
+                setParentsChoice,
+                setQuranLines,
+                toggleExtraDeed,
+                updateCustomDeed,
+                handleSaveRecord,
+                changeCalendarMonth,
+                selectCalendarDay,
+                shiftWeeklyReport,
+                saveSettingsName,
+                handleExportBackup,
+                handleImportBackup,
+                confirmDeleteAll
+            };
+        })();
+
+        // تشغيل التطبيق بعد اكتمال تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            App.init();
+        });
+    </script>
+</body>
+</html>
